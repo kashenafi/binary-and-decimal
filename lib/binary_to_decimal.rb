@@ -5,5 +5,19 @@
 # Calculate  and return the decimal value for this binary number using
 # the algorithm you devised in class.
 def binary_to_decimal(binary_array)
-  raise NotImplementedError
+  parts = []
+  exponent = 0
+
+  binary_array.reverse.each_with_index do |val, ind|
+    parts << (val * (2** exponent))
+    exponent += 1
+  end
+
+  decimal_number = parts.inject(0){|sum,x| sum + x }
+
+  return decimal_number
 end
+
+binary_array = Array.new(8) { rand(0..1) }
+
+binary_to_decimal(binary_array)
